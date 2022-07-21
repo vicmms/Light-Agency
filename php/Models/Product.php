@@ -10,7 +10,7 @@ class Product
     public function fetch()
     {
         $products = [];
-        $query = "select * from products;";
+        $query = "SELECT * FROM products;";
         $result = $this->db->query($query);
         while ($filas = $result->FETCHALL(PDO::FETCH_ASSOC)) {
             $products[] = $filas;
