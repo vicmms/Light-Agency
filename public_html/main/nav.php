@@ -26,7 +26,7 @@ $category = new Category;
             </ul>
     </ul>
     <div class="btn-home">
-        <i class="material-icons w3-xxxlarge">home</i>
+        <i class="material-icons icon-large">home</i>
     </div>
 
 </nav>

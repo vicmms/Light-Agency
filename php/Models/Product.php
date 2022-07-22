@@ -19,6 +19,16 @@ class Product
         return $products[0];
     }
 
+    public function fetchProductById($product_id)
+    {
+        $products = [];
+        $query = "SELECT * FROM products WHERE id = " . $product_id . " limit 1;";
+        $stm = $this->db->prepare($query);
+        $stm->execute();
+
+        return $stm->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function featuredProducts($category_id)
     {
         $result = isset($category_id)
@@ -40,7 +50,8 @@ class Product
     {
         $result = [];
         $query = '
-        SELECT * FROM products p 
+        SELECT p.name,  p.id
+        FROM products p 
         LEFT JOIN(
             SELECT category_id as id
             FROM category_has_subcategory
@@ -104,6 +115,14 @@ class Product
         ) as sales on p.id = sales.product_id
         ORDER BY sales.quantity DESC
         LIMIT 10';
+        $stm = $this->db->prepare($query);
+        $stm->execute();
+
+        return $stm->fetchAll(PDO::FETCH_OBJ);
+    }
+    public function fetchProductComments($product_id)
+    {
+        $query = "SELECT * FROM comments WHERE product_id = " . $product_id;
         $stm = $this->db->prepare($query);
         $stm->execute();
 

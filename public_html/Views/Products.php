@@ -7,7 +7,7 @@
     <?php
     foreach ($featured_products as $key => $product) {
         echo "
-                <a href='#'>
+                <a href='index.php?c=Product&a=fetchProductById&product_id=" . $product->id . "'>
                     <img src='./assets/images/laptop.jpg'>
                     <span>" . $product->name . "</span>
                 </a>
@@ -24,7 +24,7 @@
     <?php
     foreach ($best_selled_products as $key => $product) {
         echo "
-                <a>
+                <a href='index.php?c=Product&a=fetchProductById&product_id=" . $product->id . "'>
                     <img src='./assets/images/laptop.jpg'>
                     <span>" . $product->name . "</span>
                 </a>
