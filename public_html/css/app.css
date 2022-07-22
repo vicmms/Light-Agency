@@ -58,8 +58,7 @@ body {
 }
 .content {
   padding: 10rem 2rem;
-  max-width: 54rem;
-  display: flex;
+  max-width: 70rem;
   justify-content: space-between;
   margin: 0 auto;
 }
@@ -68,6 +67,10 @@ body {
 }
 .justify-right {
   justify-content: right;
+}
+.justify-between {
+  justify-content: space-between;
+  align-items: baseline;
 }
 .rounded-full {
   border-radius: 100%;
@@ -154,6 +157,7 @@ footer {
   z-index: 100;
 }
 
+<<<<<<< Updated upstream
 .slide {
   clear: both;
   width: fit-content;
@@ -161,6 +165,30 @@ footer {
   height: 0px;
   overflow: hidden;
   transition: height 0.4s ease;
+=======
+/* menu dropdown */
+.parent {
+  display: block;
+  position: relative;
+  float: left;
+  line-height: 30px;
+  background-color: transparent;
+}
+a {
+  text-decoration: none;
+}
+.parent a {
+  margin: 10px;
+  color: #ffffff;
+}
+
+.child {
+  transition-delay: 2s;
+}
+
+.parent:hover > ul {
+  display: block;
+>>>>>>> Stashed changes
   position: absolute;
   top: 0px;
   left: 50px;
@@ -189,12 +217,20 @@ footer {
   list-style: none;
   padding: 0px;
 }
+<<<<<<< Updated upstream
 .menu span {
   font-size: 20px;
   font-weight: 500;
 }
 .pl-2 {
   padding-left: 1rem;
+=======
+
+ul ul ul {
+  left: 99%;
+  top: 0;
+  margin-left: 1px;
+>>>>>>> Stashed changes
 }
 
 .align-center {
@@ -217,8 +253,56 @@ footer {
   background: rgb(7, 211, 211);
   border-radius: 10px;
 }
+.text-xl {
+  font-size: 26px;
+}
 
+<<<<<<< Updated upstream
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(29, 192, 221);
+=======
+.hamburguer {
+  top: 8px;
+  padding-top: 8px;
+>>>>>>> Stashed changes
+}
+.hamburguer a {
+  color: rgb(149, 27, 153);
+}
+.hamburguer:hover .btn {
+  color: rgb(236, 236, 236);
+}
+.btn-home {
+  position: absolute;
+  top: 13px;
+  left: 70px;
+  color: #ececec;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+}
+
+.btn-home:hover {
+  color: #c0e9fa;
+}
+.slider {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+.row a {
+  margin: 5px;
+}
+.slider a {
+  margin-right: 15px;
+  text-align: center;
+}
+.slider img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
 }
