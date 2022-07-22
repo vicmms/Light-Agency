@@ -1,5 +1,4 @@
-<?php require_once 'main/header.php'; ?>
-
+<?php require "main/header.php" ?>
 <h2>Productos destacados</h2>
 <ul>
     <?php
@@ -8,4 +7,4 @@
     }
     ?>
 </ul>
-<?php require_once 'main/footer.php'; ?>
+<?php require "main/footer.php" ?>
