@@ -1,27 +1,33 @@
 <?php
+require_once dirname(__DIR__, 2) . '\install\Conexion.php';
+
 class Product
 {
     private $db;
     private $category_id;
+
     public function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=store', "root", "pass");
+        try {
+            $this->db =  Conexion::start();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
     }
 
-    public function fetch()
-    {
-        $products = [];
-        $query = "select * from products;";
-        $result = $this->db->query($query);
-        while ($filas = $result->FETCHALL(PDO::FETCH_ASSOC)) {
-            $products[] = $filas;
-        }
-        return $products[0];
-    }
+    // public function fetch()
+    // {
+    //     $products = [];
+    //     $query = "select * from products;";
+    //     $result = $this->db->query($query);
+    //     while ($filas = $result->FETCHALL(PDO::FETCH_ASSOC)) {
+    //         $products[] = $filas;
+    //     }
+    //     return $products[0];
+    // }
 
     public function fetchProductById($product_id)
     {
-        $products = [];
         $query = "SELECT * FROM products WHERE id = " . $product_id . " limit 1;";
         $stm = $this->db->prepare($query);
         $stm->execute();
@@ -44,6 +50,45 @@ class Product
             : $this->fetchSelled();
 
         return $result;
+    }
+
+    public function all($category_id)
+    {
+        $result = isset($category_id)
+            ? $this->fetchAllByCategory($category_id)
+            : $this->fetchAll();
+
+        return $result;
+    }
+
+    public function fetchAllByCategory($category_id)
+    {
+        $result = [];
+        $query = '
+        SELECT p.name,  p.id
+        FROM products p 
+        LEFT JOIN(
+            SELECT category_id as id
+            FROM category_has_subcategory
+            where parent_id = ' . $category_id . '
+        ) as parent on p.category_id = parent.id
+        WHERE p.category_id = ' . $category_id . ' or p.category_id = parent.id
+        ';
+        $stm = $this->db->prepare($query);
+        $stm->execute();
+
+        return $stm->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function fetchAll($category_id)
+    {
+        $query = '
+        SELECT p.name,  p.id
+        FROM products p ';
+        $stm = $this->db->prepare($query);
+        $stm->execute();
+
+        return $stm->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function fetchFeaturedByCategory($category_id)

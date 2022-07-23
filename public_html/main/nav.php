@@ -26,7 +26,7 @@ $category = new Category;
             </ul>
     </ul>
     <div class="btn-home">
-        <i class="material-icons icon-large">home</i>
+        <a href="index.php"><i class="material-icons icon-large">home</i></a>
     </div>
 
 </nav>

@@ -47,7 +47,7 @@ body {
 .header-content {
   text-align: left;
   padding: 5rem 4rem;
-  max-width: 74rem;
+  max-width: 80rem;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
@@ -58,7 +58,7 @@ body {
 }
 .content {
   padding: 2rem;
-  max-width: 70rem;
+  max-width: 65rem;
   justify-content: space-between;
   margin: 0 auto;
   margin-bottom: 6vh;
@@ -271,7 +271,7 @@ li:hover {
 .btn-home {
   position: absolute;
   top: 20px;
-  left: 70px;
+  left: 65px;
   color: #ececec;
   cursor: pointer;
   width: 45px;
@@ -284,6 +284,7 @@ li:hover {
 .slider {
   width: 100%;
   display: flex;
+  justify-content: center;
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;

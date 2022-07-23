@@ -1,7 +1,7 @@
 <?php require_once 'main/header.php'; ?>
 <div class="flex justify-between">
     <span class="text-xl">Productos destacados</span>
-    <a href="#">Ver todos</a>
+    <a href="index.php?c=Product&a=all">Ver todos</a>
 </div>
 <div class="slider">
     <?php
@@ -18,7 +18,6 @@
 <br><br>
 <div class="flex justify-between">
     <span class="text-xl">Productos mas vendidos</span>
-    <a href="#">Ver todos</a>
 </div>
 <div class="slider">
     <?php

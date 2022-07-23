@@ -1,6 +1,6 @@
 <?php
-require_once("../php/Models/Conexion.php");
-$controller = 'Home';
+// require_once("../php/Models/Conexion.php");
+$controller = 'Product';
 
 if (isset($_REQUEST['c'])) {
     $controller = $_REQUEST['c']; //strlower
@@ -15,5 +15,5 @@ if (isset($_REQUEST['c'])) {
     require_once "../php/Controllers/" . $controller . "Controller.php";
     $controller = $controller . 'Controller';
     $controller = new $controller;
-    $controller->index();
+    $controller->fetchByCategory();
 }

@@ -1,5 +1,5 @@
 <?php
-require_once("../php/Models/Product.php");
+require_once(dirname(__DIR__) . "/Models/Product.php");
 
 class ProductController
 {
