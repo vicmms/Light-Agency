@@ -17,7 +17,7 @@
         <div class="header-background"></div>
         <div class="header-content">
             <div class="col-5">
-                <div class="title">
+                <div class="main-title">
                     <span>NEON Store</span>
                     <small>Tienda en linea</small>
                 </div>

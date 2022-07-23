@@ -388,7 +388,7 @@ select {
   display: flex;
   float: right;
 }
-.title{
+.main-title{
   border-width: 4px;
   border-style: solid;
   border-image: linear-gradient(to right, darkblue, darkorchid) 1;
@@ -397,12 +397,12 @@ select {
   color: #322d2d;
   background: linear-gradient(19deg, rgb(255 255 255), rgb(255 224 177 / 92%));
 }
-.title span{
+.main-title span{
   font-weight: 500;
   font-size: 36px;
   display: block;
 }
-.title small{
+.main-title small{
   font-weight: 400;
   font-size: 25px;
 }
