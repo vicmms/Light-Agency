@@ -15,57 +15,50 @@ class Product
         }
     }
 
-    // public function fetch()
-    // {
-    //     $products = [];
-    //     $query = "select * from products;";
-    //     $result = $this->db->query($query);
-    //     while ($filas = $result->FETCHALL(PDO::FETCH_ASSOC)) {
-    //         $products[] = $filas;
-    //     }
-    //     return $products[0];
-    // }
-
     public function fetchProductById($product_id)
     {
-        $query = "SELECT * FROM products WHERE id = " . $product_id . " limit 1;";
+        $query = "
+            SELECT * , c.name as category_name, c.id as category_id
+            FROM products p 
+            LEFT JOIN categories c on p.category_id = c.id
+            WHERE p.id = " . $product_id . " limit 1;";
         $stm = $this->db->prepare($query);
         $stm->execute();
 
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function featuredProducts($category_id)
+    public function featuredProducts($category_id, $all)
     {
         $result = isset($category_id)
             ? $this->fetchFeaturedByCategory($category_id)
-            : $this->fetchFeatured();
+            : $this->fetchFeatured($all);
         return $result;
     }
 
-    public function bestSelledProducts($category_id)
+    public function bestSelledProducts($category_id, $all)
     {
         $result = isset($category_id)
             ? $this->fetchSelledByCategory($category_id)
-            : $this->fetchSelled();
+            : $this->fetchSelled($all);
 
         return $result;
     }
 
-    public function all($category_id)
-    {
-        $result = isset($category_id)
-            ? $this->fetchAllByCategory($category_id)
-            : $this->fetchAll();
+    // public function all($category_id)
+    // {
+    //     $result = isset($category_id)
+    //         ? $this->fetchAllByCategory($category_id)
+    //         : $this->fetchAll();
 
-        return $result;
-    }
+    //     return $result;
+    // }
 
     public function fetchAllByCategory($category_id)
     {
         $result = [];
         $query = '
-        SELECT p.name,  p.id
+        SELECT p.name,  p.id, p.image
         FROM products p 
         LEFT JOIN(
             SELECT category_id as id
@@ -80,10 +73,10 @@ class Product
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function fetchAll($category_id)
+    public function fetchAll($category_id = null)
     {
         $query = '
-        SELECT p.name,  p.id
+        SELECT p.name,  p.id, p.image
         FROM products p ';
         $stm = $this->db->prepare($query);
         $stm->execute();
@@ -95,8 +88,9 @@ class Product
     {
         $result = [];
         $query = '
-        SELECT p.name,  p.id
-        FROM products p 
+        SELECT p.name,  p.id, p.image, c.name as category
+        FROM products p
+        LEFT JOIN categories c on p.category_id =  c.id
         LEFT JOIN(
             SELECT category_id as id
             FROM category_has_subcategory
@@ -110,12 +104,19 @@ class Product
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function fetchFeatured()
+    public function fetchFeatured($all = false)
     {
-        $result = [];
+        $limit_condition = $all ? '' : 'LIMIT 10';
         $query = '
-        SELECT * FROM products p 
-        LIMIT 10';
+        SELECT p.*, rate.classification
+        FROM products p
+        LEFT JOIN (
+            SELECT AVG(classification) as classification, product_id
+            FROM comments 
+            GROUP BY product_id
+        ) as rate on rate.product_id = p.id
+        '
+            . $limit_condition;
         $stm = $this->db->prepare($query);
         $stm->execute();
 
@@ -126,7 +127,7 @@ class Product
     {
         $result = [];
         $query = '
-        SELECT p.name, p.id 
+        SELECT p.name, p.id, p.image
         FROM products p 
         LEFT JOIN(
             SELECT SUM(quantity) as quantity, product_id
@@ -147,19 +148,24 @@ class Product
         return $stm->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function fetchSelled()
+    public function fetchSelled($all = false)
     {
-        $result = [];
+        $limit_condition = $all ? '' : 'LIMIT 10';
         $query = '
-        SELECT p.name, p.id 
+        SELECT p.*, rate.classification, sales.quantity
         FROM products p 
+        LEFT JOIN (
+            SELECT AVG(classification) as classification, product_id
+            FROM comments 
+            GROUP BY product_id
+        ) as rate on rate.product_id = p.id
         LEFT JOIN(
             SELECT SUM(quantity) as quantity, product_id
             FROM orders
             GROUP BY product_id
         ) as sales on p.id = sales.product_id
-        ORDER BY sales.quantity DESC
-        LIMIT 10';
+        ORDER BY sales.quantity DESC '
+            . $limit_condition;
         $stm = $this->db->prepare($query);
         $stm->execute();
 

@@ -290,6 +290,9 @@ li:hover {
   overflow-y: hidden;
   scroll-behavior: smooth;
 }
+.slider a{
+  display: grid;
+}
 .row {
   display: block;
 }
@@ -351,6 +354,9 @@ select {
   color: whitesmoke;
   background: rgb(42, 53, 158);
 }
+.bttn-secondary a{
+  color: whitesmoke;
+}
 .mr-2 {
   margin-right: 1rem;
 }
@@ -359,4 +365,44 @@ select {
 }
 .color-yellow {
   color: rgb(214, 186, 27);
+}
+.card{
+  display: flex;
+  box-shadow: inset 0px 0px 4px 0px;
+  padding: 10px;
+  margin: 15px auto;
+  border-radius: 10px;
+  max-width: 850px;
+}
+
+.card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-right: 20px;
+}
+.card span{
+  display: block;
+}
+.card .bttn{
+  display: flex;
+  float: right;
+}
+.title{
+  border-width: 4px;
+  border-style: solid;
+  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+  padding: 18px;
+  font-style: italic;
+  color: #322d2d;
+  background: linear-gradient(19deg, rgb(255 255 255), rgb(255 224 177 / 92%));
+}
+.title span{
+  font-weight: 500;
+  font-size: 36px;
+  display: block;
+}
+.title small{
+  font-weight: 400;
+  font-size: 25px;
 }

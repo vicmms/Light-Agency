@@ -18,3 +18,8 @@
 [] => 10 registros agregados correctamente en la tabla Products
 [] => 10 registros agregados correctamente en la tabla Comments
 [] => 10 registros agregados correctamente en la tabla Orders
+[] => 10 registros agregados correctamente en la tabla Categories
+[] => 10 registros agregados correctamente en la tabla category_has_subcategory
+[] => 10 registros agregados correctamente en la tabla Products
+[] => 100 registros agregados correctamente en la tabla Comments
+[] => 10 registros agregados correctamente en la tabla Orders

@@ -13,11 +13,11 @@ $category = new Category;
                 <?php
                 foreach ($category->fetchParents() as $key => $cat) {
                     echo "
-                        <li class='parent'><a href='index.php?c=Product&a=fetchByCategory&category_id=" . $cat['id'] . "'>" . $cat['name'] . " <span class='expand'></span></a>
+                        <li class='parent'><a href='index.php?c=Product&a=fetchByCategory&category_id=" . $cat['id'] . "&category_name=" . $cat['name'] . "'>" . $cat['name'] . " <span class='expand'></span></a>
                         <ul class='child'>
                     ";
                     foreach ($category->fetchSubcategories($cat['id']) as $key => $subcategory) {
-                        echo "<li><a href='index.php?c=Product&a=fetchByCategory&category_id=" . $subcategory['id'] . "'>" . $subcategory['name'] . "</a></li>";
+                        echo "<li><a href='index.php?c=Product&a=fetchByCategory&category_id=" . $subcategory['id'] . "&category_name=" . $subcategory['name'] . "'>" . $subcategory['name'] . "</a></li>";
                     }
 
                     echo "</ul></li>";

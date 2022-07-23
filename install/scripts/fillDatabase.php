@@ -89,9 +89,9 @@ class fillDatabase
         $total_rows = 10;
         $table_name = 'Products';
         try {
-            $query = "INSERT INTO products(`name`,model,`description`,price, category_id) VALUES";
+            $query = "INSERT INTO products(`name`,model,`description`,price, category_id, `image`) VALUES";
             for ($i = 1; $i <= $total_rows; $i++) {
-                $query .= "('" . $brands[array_rand($brands)] . " " . $types[array_rand($types)] . "', '" . $this->generateRandomString() . "', '" . $this->generateRandomString(100) . "', " . rand(3000, 19000) . ", " . $this->categories[array_rand($this->categories)] . ")";
+                $query .= "('" . $brands[array_rand($brands)] . " " . $types[array_rand($types)] . "', '" . $this->generateRandomString() . "', '" . $this->generateRandomString(100) . "', " . rand(3000, 19000) . ", " . $this->categories[array_rand($this->categories)] . ", 'assets/images/" . rand(1, 10) . "')";
                 $query .= $i == $total_rows ? '' : ',';
             }
             $stm = $this->db->prepare($query);
@@ -108,7 +108,7 @@ class fillDatabase
 
     public function insertComments()
     {
-        $total_rows = 10;
+        $total_rows = 100;
         $table_name = 'Comments';
         try {
             $query = "INSERT INTO comments(`text`, classification, `name`, product_id) VALUES";

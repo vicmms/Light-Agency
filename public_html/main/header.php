@@ -17,9 +17,9 @@
         <div class="header-background"></div>
         <div class="header-content">
             <div class="col-5">
-                <div>
-                    <h1>PC Store</h1>
-                    <span>Tienda en linea</span>
+                <div class="title">
+                    <span>NEON Store</span>
+                    <small>Tienda en linea</small>
                 </div>
             </div>
             <div class="col-7 flex justify-right">
