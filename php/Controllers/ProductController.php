@@ -10,12 +10,7 @@ class ProductController
     {
         $this->product = new Product();
     }
-    // show products
-    function index()
-    {
-        $products = $this->product->fetch();
-        require_once("../public_html/Views/Home.php");
-    }
+    // show specific product
     function fetchProductById()
     {
         $product_id = $_REQUEST['product_id'];
@@ -24,6 +19,7 @@ class ProductController
 
         require_once 'Views/Product.php';
     }
+    //show products by category
     function fetchByCategory()
     {
         $category_id = isset($_REQUEST['category_id']) ? $_REQUEST['category_id'] : null;
@@ -34,13 +30,13 @@ class ProductController
             ? require_once 'Views/ListAll.php'
             : require_once 'Views/Products.php';
     }
+    // show all products
     function fetchAll()
     {
         $category_id = 1;
         $products = isset($_REQUEST['all'])
             ? $this->product->featuredProducts(null, 1)
             : $this->product->bestSelledProducts(null, 1);
-        // $best_selled_products = $this->product->bestSelledProducts($category_id);
         require_once 'Views/ListAll.php';
     }
 }

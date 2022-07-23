@@ -12,26 +12,7 @@ class Category
         }
     }
 
-    public function fetch()
-    {
-        $result = [];
-        $query = 'SELECT * FROM categories';
-        $stm = $this->db->prepare($query);
-        $stm->execute();
 
-        return $stm->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    public function fetchAll()
-    {
-        $categories = [];
-        $query = "SELECT * FROM categories;";
-        $result = $this->db->query($query);
-        while ($filas = $result->FETCHALL(PDO::FETCH_ASSOC)) {
-            $categories[] = $filas;
-        }
-        return $categories[0];
-    }
 
     public function fetchParents()
     {

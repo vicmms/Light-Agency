@@ -1,7 +1,7 @@
 </div>
 </body>
 <footer>
-    <span>fotter</span>
+    <span> &copy; NEON Store</span>
 </footer>
 
 </html>

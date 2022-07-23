@@ -45,15 +45,6 @@ class Product
         return $result;
     }
 
-    // public function all($category_id)
-    // {
-    //     $result = isset($category_id)
-    //         ? $this->fetchAllByCategory($category_id)
-    //         : $this->fetchAll();
-
-    //     return $result;
-    // }
-
     public function fetchAllByCategory($category_id)
     {
         $result = [];
