@@ -12,10 +12,12 @@
 - Laravel 90%
 - Vuejs 70%
 
-###Contacto:
+### Contacto:
+
 **Correo: victormmsauz@gmail.com Tel: 411-1440010**
 
-###Referencias
+### Referencias
+
 GitHub https://github.com/vicmms?tab=repositories
 Plataforma Saldo HVAC: Un e-commerce en proceso (90%)
 https://plataforma.saldohvac.com/
@@ -31,7 +33,7 @@ https://universidadhvac.sarsoftware.com/
 
 **Nivel elegido: Intermedio**
 
-###Instrucciones de instalación
+### Instrucciones de instalación
 
 - Clonar el proyectocon el comando git clone https://github.com/vicmms/Light-Agency.git o descargarlo directamente de https://github.com/vicmms/Light-Agency/archive/refs/heads/main.zip
 - Una vez descargado, abrir el proyecto y ejecutar el script `createDatabase.sq` que se encuentra la carpeta **install** en el direcorio_raiz desde algún manejador SQL, en mi caso uso Workbeanch, con esto creamos la Base de datos con algunos registros.
@@ -39,7 +41,7 @@ https://universidadhvac.sarsoftware.com/
 - Abrimos el archivo en la carpeta de nuestro proyecto -> install -> `config.php` donde configuraremos las variables necesarias para conectarnos a la base de datos.
 - Finalmente brirmos el proyecto desde el navegador, en mi caso uso XAMPP para ejecutar php por lo que para acceder a mi proyecto es con la ruta http://127.0.0.1:8080/Light-Agency/public_html/index.php, pero esto varia de acuerdo con cada caso.
 
-###Actividades completadas:
+### Actividades completadas:
 
 - Creación de las tablas Productos, Categorias y Comentarios con 10 registros c/u
 - Cada tabla tiene sus índices, claves primarias y foraneas
