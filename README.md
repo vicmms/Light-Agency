@@ -53,5 +53,7 @@ https://universidadhvac.sarsoftware.com/
 - Listado de productos de acuerdo con la categoria seleccionada, si es categoria padre se muestran todos los productos de esa categoria y sus subcategorias.
 - Vista de producto con sus comentarios y su informacion general
 - Funcionalidad para calcular el pago diferido a meses de cada producto
+- Vista de productos ordenados por calificacion
+- Archivo Log con informacion de las operaciones realizadas
 
-- Se agregaron ademas 2 tablas extra, una para determinar las categorias y sus subcategorias en donde se almacena cada categoria con su categoria padre y la tabla de ordenes donde se indica el detalle de cada venta y con el que se puede determinar la cantidad de productos vendidos individualmente,
+- Se agregaron ademas 2 tablas extra, una para determinar las categorias y sus subcategorias en donde se almacena cada categoria con su categoria padre y la tabla de ordenes donde se indica el detalle de cada venta y con el que se puede determinar la cantidad de productos vendidos individualmente.
